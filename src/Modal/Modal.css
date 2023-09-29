@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppons", sans-serif;
+}
+
 .modal {
   height: 100vh;
   width: 100vw;
@@ -19,15 +28,61 @@
 }
 
 .modal__content {
+  border: 5px solid rgb(155, 102, 42);
   padding: 20px;
   border-radius: 12px;
-  background-color: white;
+  background-color: #a3e6a3;
   height: 400px;
   width: 400px;
   transform: scale(0.5);
   transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .modal__content.active {
   transform: scale(1);
+}
+
+.modalTitle {
+  text-align: center;
+  padding: 20px;
+}
+
+.modalImput {
+  border: 2px solid rgb(155, 102, 42);
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.imputContainer {
+  text-align: center;
+  padding: 20px;
+}
+
+.btnСonsent {
+  appearance: none;
+  padding: 10px;
+  border: none;
+  background: rgb(155, 102, 42);
+  color: #fff;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.btnContainer {
+  text-align: center;
+}
+
+.btnСonsent:hover {
+  background: #fff;
+  color: #000000;
+  border: 2px solid rgb(155, 102, 42);
 }

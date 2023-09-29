@@ -10,8 +10,15 @@ const Modal = ({ active, setActive }) => {
         className={active ? "modal__content active" : "modal__content"}
         onClick={(e) => e.stopPropagation()}
       >
-        <h1>Кто ты Воин?</h1>
-        <input type="" />
+        <h1 className="modalTitle">Кто ты Воин?</h1>
+        <div className="imputContainer">
+          <input className="modalImput" type="" placeholder="Name" />
+        </div>
+        <div className="btnContainer">
+          <button className="btnСonsent" onClick={() => setActive(false)}>
+            OK
+          </button>
+        </div>
       </div>
     </div>
   );

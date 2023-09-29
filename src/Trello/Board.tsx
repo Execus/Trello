@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 import { BoardType, CardType } from "./TrelloContent";
 
 type BoardProps = {
@@ -22,13 +22,40 @@ const Board: FC<BoardProps> = ({
   dropHendler,
   onRemoveCard,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [tempTitle, setTempTitle] = useState(board.title);
+
   return (
     <div
       className="board"
       onDragOver={(e) => dragOverHandler(e)}
       onDrop={(e) => dropCardHendler(e, board)}
     >
-      <div className="board__title">{board.title}</div>
+      {isEditing ? (
+        <input
+          type="text"
+          value={tempTitle}
+          onChange={(e) => setTempTitle(e.target.value)}
+          onBlur={() => {
+            setIsEditing(false);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              setIsEditing(false);
+            }
+          }}
+          autoFocus
+        />
+      ) : (
+        <div
+          className="board__title"
+          onDoubleClick={() => {
+            setIsEditing(true);
+          }}
+        >
+          {board.title}
+        </div>
+      )}
       {board.cards.map((card) => (
         <div
           key={card.id}
@@ -44,7 +71,7 @@ const Board: FC<BoardProps> = ({
           <div className="battons-container">
             <button
               onClick={() => onRemoveCard(card.id, board.id)}
-              className="removeItem"
+              className="removeBtnItem"
             >
               X
             </button>
